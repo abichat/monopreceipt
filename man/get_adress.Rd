@@ -6,6 +6,7 @@
 \alias{get_total}
 \alias{get_discount}
 \alias{get_topay}
+\alias{get_discounts}
 \title{Extract specific fields}
 \usage{
 get_adress(raw)
@@ -17,12 +18,14 @@ get_total(raw)
 get_discount(raw)
 
 get_topay(raw)
+
+get_discounts(raw)
 }
 \arguments{
 \item{raw}{A raw receipt.}
 }
 \value{
-A vector containing the desired information.
+A vector or a tibble containing the desired information.
 }
 \description{
 Extract specific fields

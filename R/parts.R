@@ -2,7 +2,7 @@
 #'
 #' @param raw A raw receipt.
 #'
-#' @return A vector containing the desired information.
+#' @return A vector or a tibble containing the desired information.
 #' @export
 #'
 #' @importFrom stringr str_squish str_to_title
@@ -55,4 +55,28 @@ get_topay <- function(raw) {
     "["(1) %>%
     str_extract("[-\\d\\.]+") %>%
     as.numeric()
+}
+
+#' @rdname get_adress
+#' @importFrom dplyr mutate
+#' @importFrom purrr discard
+#' @importFrom rlang .data
+#' @importFrom stringr str_remove_all
+#' @importFrom tibble as_tibble
+get_discounts <- function(raw) {
+  raw %>%
+    extract_between(before = "MES REMISES",
+                    after = "^ *TOTAL DES REMISES",
+                    include = FALSE) %>%
+    extract_between(before = "---{3,}",
+                    after = "---{3,}",
+                    include = FALSE) %>%
+    discard(~ . == "") %>%
+    str_remove_all("^ *") %>%
+    str_split(" {3,}") %>%
+    unlist() %>%
+    matrix(ncol = 2, byrow = TRUE,
+           dimnames = list(NULL, c("discount_name", "total"))) %>%
+    as_tibble() %>%
+    mutate(total = as.numeric(str_remove_all(.data$total, "[^\\d-.]")))
 }
