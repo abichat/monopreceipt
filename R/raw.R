@@ -2,7 +2,7 @@
 #'
 #' @param pdf File path or raw vector with pdf data.
 #'
-#' @return A
+#' @return A raw receipt as a character vector.
 #' @export
 #'
 #' @importFrom pdftools pdf_text

@@ -10,7 +10,7 @@ raw_receipt(pdf)
 \item{pdf}{File path or raw vector with pdf data.}
 }
 \value{
-A
+A raw receipt as a character vector.
 }
 \description{
 Read receipt from PDF
