@@ -2,16 +2,19 @@
 % Please edit documentation in R/parts.R
 \name{get_adress}
 \alias{get_adress}
-\title{Exctract adress field}
+\alias{get_date}
+\title{Extract specific fields}
 \usage{
 get_adress(raw)
+
+get_date(raw)
 }
 \arguments{
 \item{raw}{A raw receipt.}
 }
 \value{
-A length-two vector
+A vector containing the desired information.
 }
 \description{
-Exctract adress field
+Extract specific fields
 }
