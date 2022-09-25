@@ -1,0 +1,11 @@
+Package: monopreceipt
+Type: Package
+Title: Read Monoprix Receipt
+Version: 0.0.0.9000
+Authors@R: 
+    person("Antoine", "Bichat", , "antoine.bichat@proton.me", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0001-6599-7081"))
+Description: Read Monoprix receipt directly from PDF receipt sent by e-mail.
+License: GPL (>= 3)
+Encoding: UTF-8
+LazyData: true
