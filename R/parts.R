@@ -59,7 +59,6 @@ get_topay <- function(raw) {
 
 #' @rdname get_adress
 #' @importFrom dplyr mutate
-#' @importFrom purrr discard
 #' @importFrom rlang .data
 #' @importFrom stringr str_remove_all
 #' @importFrom tibble as_tibble
@@ -71,7 +70,7 @@ get_discounts <- function(raw) {
     extract_between(before = "---{3,}",
                     after = "---{3,}",
                     include = FALSE) %>%
-    discard(~ . == "") %>%
+    discard_blanks() %>%
     str_remove_all("^ *") %>%
     str_split(" {3,}") %>%
     unlist() %>%
@@ -80,3 +79,6 @@ get_discounts <- function(raw) {
     as_tibble() %>%
     mutate(total = as.numeric(str_remove_all(.data$total, "[^\\d-.]")))
 }
+
+
+
