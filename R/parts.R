@@ -26,3 +26,33 @@ get_date <- function(raw) {
     unlist() %>%
     "["(1:2)
 }
+
+#' @rdname get_adress
+#' @importFrom stringr str_extract
+get_total <- function(raw) {
+  raw %>%
+    extract_between(before = "TOTAL HORS$", after = "^ * AVANTAGES",
+                    include = FALSE) %>%
+    str_extract("[-\\d\\.]+") %>%
+    as.numeric()
+}
+
+#' @rdname get_adress
+#' @importFrom stringr str_extract
+get_discount <- function(raw) {
+  raw %>%
+    extract_between(before = "TOTAL DES REMISES", after = NULL) %>%
+    "["(1) %>%
+    str_extract("[-\\d\\.]+") %>%
+    as.numeric()
+}
+
+#' @rdname get_adress
+#' @importFrom stringr str_extract
+get_topay <- function(raw) {
+  raw %>%
+    extract_between(before = "RESTE A PAYER", after = NULL) %>%
+    "["(1) %>%
+    str_extract("[-\\d\\.]+") %>%
+    as.numeric()
+}

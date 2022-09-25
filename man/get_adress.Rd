@@ -3,11 +3,20 @@
 \name{get_adress}
 \alias{get_adress}
 \alias{get_date}
+\alias{get_total}
+\alias{get_discount}
+\alias{get_topay}
 \title{Extract specific fields}
 \usage{
 get_adress(raw)
 
 get_date(raw)
+
+get_total(raw)
+
+get_discount(raw)
+
+get_topay(raw)
 }
 \arguments{
 \item{raw}{A raw receipt.}
