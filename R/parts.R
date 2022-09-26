@@ -6,14 +6,14 @@
 #' @export
 #'
 #' @importFrom stringr str_squish str_to_title
-get_adress <- function(raw) {
+get_address <- function(raw) {
   raw %>%
     "["(2:3) %>%
     str_squish() %>%
     str_to_title()
 }
 
-#' @rdname get_adress
+#' @rdname get_address
 #' @importFrom stringr str_remove_all
 get_date <- function(raw) {
   raw %>%
@@ -27,7 +27,7 @@ get_date <- function(raw) {
     "["(1:2)
 }
 
-#' @rdname get_adress
+#' @rdname get_address
 #' @importFrom stringr str_extract
 get_total <- function(raw) {
   raw %>%
@@ -37,7 +37,7 @@ get_total <- function(raw) {
     as.numeric()
 }
 
-#' @rdname get_adress
+#' @rdname get_address
 #' @importFrom stringr str_extract
 get_discount <- function(raw) {
   raw %>%
@@ -47,7 +47,7 @@ get_discount <- function(raw) {
     as.numeric()
 }
 
-#' @rdname get_adress
+#' @rdname get_address
 #' @importFrom stringr str_extract
 get_topay <- function(raw) {
   raw %>%
@@ -57,7 +57,7 @@ get_topay <- function(raw) {
     as.numeric()
 }
 
-#' @rdname get_adress
+#' @rdname get_address
 #' @importFrom dplyr mutate
 #' @importFrom rlang .data
 #' @importFrom stringr str_remove_all
@@ -80,7 +80,7 @@ get_discounts <- function(raw) {
     mutate(total = as.numeric(str_remove_all(.data$total, "[^\\d-.]")))
 }
 
-#' @rdname get_adress
+#' @rdname get_address
 #' @importFrom purrr map_dfr
 get_purchases <- function(raw) {
   raw %>%
