@@ -80,5 +80,11 @@ get_discounts <- function(raw) {
     mutate(total = as.numeric(str_remove_all(.data$total, "[^\\d-.]")))
 }
 
-
-
+#' @rdname get_adress
+#' @importFrom purrr map_dfr
+get_purchases <- function(raw) {
+  raw %>%
+    extract_purchases() %>%
+    products_contents() %>%
+    map_dfr(product_info)
+}

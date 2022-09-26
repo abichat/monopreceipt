@@ -7,6 +7,7 @@
 \alias{get_discount}
 \alias{get_topay}
 \alias{get_discounts}
+\alias{get_purchases}
 \title{Extract specific fields}
 \usage{
 get_adress(raw)
@@ -20,6 +21,8 @@ get_discount(raw)
 get_topay(raw)
 
 get_discounts(raw)
+
+get_purchases(raw)
 }
 \arguments{
 \item{raw}{A raw receipt.}
