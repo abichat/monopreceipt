@@ -45,7 +45,7 @@ get_total <- function(raw) {
     extract_between(before = "TOTAL HORS$", after = "^ * AVANTAGES",
                     include = FALSE) %>%
     str_extract("[-\\d\\.]+") %>%
-    as.numeric()
+    num4()
 }
 
 #' @rdname get_address
@@ -56,7 +56,7 @@ get_discount <- function(raw) {
     extract_between(before = "TOTAL DES REMISES", after = NULL) %>%
     "["(1) %>%
     str_extract("[-\\d\\.]+") %>%
-    as.numeric()
+    num4()
 }
 
 #' @rdname get_address
@@ -66,8 +66,8 @@ get_topay <- function(raw) {
   raw %>%
     extract_between(before = "RESTE A PAYER", after = NULL) %>%
     "["(1) %>%
-    str_extract("[-\\d\\.]+") %>%
-    as.numeric()
+    str_extract("[\\d\\.]+") %>%
+    num4()
 }
 
 #' @rdname get_address

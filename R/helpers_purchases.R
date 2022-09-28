@@ -32,13 +32,16 @@ products_contents <- function(txt) {
 product_info <- function(content) {
   products <- str_remove_all(content[1], " {3,}.*")
   product <- str_remove_all(products, "^  [\\d\\.]+ ")
-  quantity <- str_extract(products, "[\\d\\.]+")
+  quantity <-
+    products %>%
+    str_extract("[\\d\\.]+") %>%
+    num4()
 
   price_with_discounts <-
     content[1] %>%
     str_remove_all(".* {3,}") %>%
     str_extract("[-\\d\\.]+") %>%
-    as.numeric()
+    num4()
 
   if (length(content) == 1) {
     total_price <- price_with_discounts
@@ -49,7 +52,7 @@ product_info <- function(content) {
       content[2] %>%
       str_remove_all(".* {3,}") %>%
       str_extract_all("[-\\d\\.]+") %>%
-      map(as.numeric) %>%
+      map(num4) %>%
       map_dbl(sum)
     total_price <- price_with_discounts - discouts
     discouts_names <-
