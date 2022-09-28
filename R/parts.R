@@ -14,6 +14,7 @@ get_address <- function(raw) {
 }
 
 #' @rdname get_address
+#' @export
 #' @importFrom stringr str_remove_all
 get_date <- function(raw) {
   raw %>%
@@ -28,6 +29,16 @@ get_date <- function(raw) {
 }
 
 #' @rdname get_address
+#' @export
+#' @importFrom stringr str_remove_all str_subset
+get_client <- function(raw) {
+  raw %>%
+    str_subset("Bonjour") %>%
+    str_remove_all(" {3,}Bonjour ")
+}
+
+#' @rdname get_address
+#' @export
 #' @importFrom stringr str_extract
 get_total <- function(raw) {
   raw %>%
@@ -38,6 +49,7 @@ get_total <- function(raw) {
 }
 
 #' @rdname get_address
+#' @export
 #' @importFrom stringr str_extract
 get_discount <- function(raw) {
   raw %>%
@@ -48,6 +60,7 @@ get_discount <- function(raw) {
 }
 
 #' @rdname get_address
+#' @export
 #' @importFrom stringr str_extract
 get_topay <- function(raw) {
   raw %>%
@@ -58,6 +71,7 @@ get_topay <- function(raw) {
 }
 
 #' @rdname get_address
+#' @export
 #' @importFrom dplyr mutate
 #' @importFrom rlang .data
 #' @importFrom stringr str_remove_all
@@ -81,6 +95,7 @@ get_discounts <- function(raw) {
 }
 
 #' @rdname get_address
+#' @export
 #' @importFrom purrr map_dfr
 get_purchases <- function(raw) {
   raw %>%

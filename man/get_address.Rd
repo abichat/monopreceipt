@@ -3,6 +3,7 @@
 \name{get_address}
 \alias{get_address}
 \alias{get_date}
+\alias{get_client}
 \alias{get_total}
 \alias{get_discount}
 \alias{get_topay}
@@ -13,6 +14,8 @@
 get_address(raw)
 
 get_date(raw)
+
+get_client(raw)
 
 get_total(raw)
 
