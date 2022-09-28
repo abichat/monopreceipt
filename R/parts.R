@@ -50,8 +50,13 @@ get_total <- function(raw) {
 
 #' @rdname get_address
 #' @export
-#' @importFrom stringr str_extract
+#' @importFrom stringr str_detect str_extract
 get_discount <- function(raw) {
+
+  if(!any(str_detect(raw, "TOTAL DES REMISES"))) {
+    return(0)
+  }
+
   raw %>%
     extract_between(before = "TOTAL DES REMISES", after = NULL) %>%
     "["(1) %>%
@@ -61,12 +66,13 @@ get_discount <- function(raw) {
 
 #' @rdname get_address
 #' @export
-#' @importFrom stringr str_extract
+#' @importFrom stringr str_extract str_replace_all
 get_topay <- function(raw) {
   raw %>%
     extract_between(before = "RESTE A PAYER", after = NULL) %>%
     "["(1) %>%
-    str_extract("[\\d\\.]+") %>%
+    str_extract("-?[\\d\\.,]+") %>%
+    str_replace_all(",", ".") %>%
     num4()
 }
 
@@ -74,9 +80,13 @@ get_topay <- function(raw) {
 #' @export
 #' @importFrom dplyr mutate
 #' @importFrom rlang .data
-#' @importFrom stringr str_remove_all
+#' @importFrom stringr str_detect str_remove_all
 #' @importFrom tibble as_tibble
 get_discounts <- function(raw) {
+
+  if(!any(str_detect(raw, "TOTAL DES REMISES"))) {
+    return(NULL)
+  }
   raw %>%
     extract_between(before = "MES REMISES",
                     after = "^ *TOTAL DES REMISES",
