@@ -78,7 +78,7 @@ get_topay <- function(raw) {
 
 #' @rdname get_address
 #' @export
-#' @importFrom dplyr mutate
+#' @importFrom dplyr mutate group_by summarise
 #' @importFrom rlang .data
 #' @importFrom stringr str_detect str_remove_all
 #' @importFrom tibble as_tibble
@@ -101,7 +101,10 @@ get_discounts <- function(raw) {
     matrix(ncol = 2, byrow = TRUE,
            dimnames = list(NULL, c("discount_name", "agg_discount"))) %>%
     as_tibble() %>%
-    mutate(agg_discount = num4(str_remove_all(.data$agg_discount, "[^\\d-.]")))
+    mutate(agg_discount = str_remove_all(.data$agg_discount, "[^\\d-.]"),
+           agg_discount = num4(.data$agg_discount)) %>%
+    group_by(.data$discount_name) %>%
+    summarise(agg_discount = sum(.data$agg_discount))
 }
 
 #' @rdname get_address
