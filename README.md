@@ -4,6 +4,9 @@
 # monopreceipt
 
 <!-- badges: start -->
+
+![packageversion](https://img.shields.io/badge/version-0.0.0.9000-orange.svg)
+[![R-CMD-check](https://github.com/abichat/monopreceipt/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/abichat/monopreceipt/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 `monopreceipt` allow users to read information from Monoprix PDF

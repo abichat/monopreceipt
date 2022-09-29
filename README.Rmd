@@ -15,7 +15,14 @@ knitr::opts_chunk$set(
 
 # monopreceipt
 
+```{r, echo = FALSE}
+version <- as.vector(read.dcf('DESCRIPTION')[, 'Version'])
+version <- gsub('-', '.', version)
+```
+
 <!-- badges: start -->
+![packageversion](https://img.shields.io/badge/version-`r version`-orange.svg)
+[![R-CMD-check](https://github.com/abichat/monopreceipt/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/abichat/monopreceipt/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 `monopreceipt` allow users to read information from Monoprix PDF receipts.

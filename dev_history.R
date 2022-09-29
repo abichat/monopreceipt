@@ -26,6 +26,10 @@ library(testthat)
 
 # use_readme_rmd()
 
+# badgecreatr::badge_packageversion()
+
+# use_github_action_check_release()
+
 
 ####
 
