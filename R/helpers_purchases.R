@@ -8,7 +8,7 @@ extract_purchases <- function(raw) {
 
 
 products_start_line <- function(txt) {
-  str_which(txt, "^  [\\d\\.]+ ")
+  str_which(txt, "^ {2,3}[\\d\\.]+ ")
 }
 
 #' @importFrom purrr map2
@@ -30,8 +30,8 @@ products_contents <- function(txt) {
 #' @importFrom stringr str_extract str_extract_all str_remove_all str_squish
 #' @importFrom tibble tibble
 product_info <- function(content) {
-  products <- str_remove_all(content[1], " {3,}.*")
-  product <- str_remove_all(products, "^  [\\d\\.]+ ")
+  products <- str_remove_all(content[1], " {4,}.*")
+  product <- str_remove_all(products, "^ {2,3}[\\d\\.]+ ")
   quantity <-
     products %>%
     str_extract("[\\d\\.]+") %>%
@@ -57,7 +57,7 @@ product_info <- function(content) {
     price <- price_with_discounts - discount
     discounts_names <-
       content[-1] %>%
-      str_remove_all(" {5,}.*$") %>%
+      str_remove_all(" {7,}.*$") %>%
       paste0(collapse = "") %>%
       str_squish()
   }
