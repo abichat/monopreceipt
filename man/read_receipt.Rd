@@ -15,3 +15,6 @@ A tibble.
 \description{
 Read a receipt from PDF
 }
+\details{
+`read_receipt` is vectorised over `pdf`.
+}

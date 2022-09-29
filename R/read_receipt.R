@@ -1,13 +1,21 @@
 #' Read a receipt from PDF
 #'
+#' @details `read_receipt` is vectorised over `pdf`.
+#'
 #' @inheritParams raw_receipt
 #'
 #' @return A tibble.
 #' @export
 #'
-#' @importFrom tibble tibble
+#' @importFrom purrr map_dfr
 #'
 read_receipt <- function(pdf) {
+  map_dfr(pdf, read_receipt_one)
+}
+
+
+#' @importFrom tibble tibble
+read_receipt_one <- function(pdf) {
   raw <- raw_receipt(pdf)
   v_date <- get_date(raw)
   v_address <- get_address(raw)
