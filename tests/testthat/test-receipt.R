@@ -9,13 +9,14 @@ test_that("format is correct", {
   expect_equal(nrow(receipts), length(pdfs))
   expect_equal(receipts$total_discount == 0,
                map_lgl(receipts$discounts_detail, is.null))
+  expect_equal(nrow(receipts$purchases_detail[[1]]), 18) # hardcoded
 })
 
 test_that("total is correct", {
   receipts <- read_receipt(pdfs)
   total <-
     receipts$purchases_detail %>%
-    map(pull, price) %>%
+    map(pluck, "price") %>%
     map_dbl(sum)
   expect_equal(total, receipts$total)
   expect_equal(receipts$to_pay, receipts$total + receipts$total_discount)
@@ -25,13 +26,13 @@ test_that("discount is correct", {
   receipts <- read_receipt(pdfs)
   discount1 <-
     receipts$purchases_detail %>%
-    map(pull, discount) %>%
+    map(pluck, "discount") %>%
     map_dbl(sum)
   expect_equal(discount1, receipts$total_discount)
   discount2 <-
     receipts$discounts_detail %>%
     discard(is.null) %>%
-    map(pull, agg_discount) %>%
+    map(pluck, "agg_discount") %>%
     map_dbl(sum)
   expect_equal(discount2,
                receipts$total_discount[receipts$total_discount != 0])

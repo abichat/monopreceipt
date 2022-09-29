@@ -9,12 +9,12 @@
 [![R-CMD-check](https://github.com/abichat/monopreceipt/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/abichat/monopreceipt/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
-`monopreceipt` allow users to read information from Monoprix PDF
+**monopreceipt** allow users to read information from Monoprix PDF
 receipts.
 
 ## Installation
 
-You can install the development version of monopreceipt from
+You can install the development version of **monopreceipt** from
 [GitHub](https://github.com/) with:
 
 ``` r

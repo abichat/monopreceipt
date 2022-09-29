@@ -41,6 +41,8 @@ attachment::att_amend_desc()
 
 usethis::use_tidy_description()
 
+devtools::test()
+
 devtools::check()
 
 goodpractice::goodpractice()
