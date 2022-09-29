@@ -44,25 +44,25 @@ product_info <- function(content) {
     num4()
 
   if (length(content) == 1) {
-    total_price <- price_with_discounts
-    discouts <- 0
-    discouts_names <- NA
+    price <- price_with_discounts
+    discount <- 0
+    discounts_names <- NA
   } else {
-    discouts <-
+    discount <-
       content[2] %>%
       str_remove_all(".* {3,}") %>%
       str_extract_all("[-\\d\\.]+") %>%
       map(num4) %>%
       map_dbl(sum)
-    total_price <- price_with_discounts - discouts
-    discouts_names <-
+    price <- price_with_discounts - discount
+    discounts_names <-
       content[-1] %>%
       str_remove_all(" {5,}.*$") %>%
       paste0(collapse = "") %>%
       str_squish()
   }
 
-  tibble(product = product, quantity = quantity, total_price = total_price,
-         discouts = discouts, discouts_names = discouts_names)
+  tibble(product = product, quantity = quantity, price = price,
+         discount = discount, discounts_names = discounts_names)
 }
 

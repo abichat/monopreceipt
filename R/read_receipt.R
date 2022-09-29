@@ -19,6 +19,7 @@ read_receipt <- function(pdf) {
   discounts <- get_discounts(raw)
   tibble(date = v_date[1], time = v_date[2],
          address = v_address[1], city = v_address[2], client = client,
-         total = total, discount = discount, to_pay = topay,
-         purchases = list(purchases), discounts = list(discounts))
+         total = total, total_discount = discount, to_pay = topay,
+         purchases_detail = list(purchases),
+         discounts_detail = list(discounts))
 }

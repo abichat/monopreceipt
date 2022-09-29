@@ -99,9 +99,9 @@ get_discounts <- function(raw) {
     str_split(" {3,}") %>%
     unlist() %>%
     matrix(ncol = 2, byrow = TRUE,
-           dimnames = list(NULL, c("discount_name", "total"))) %>%
+           dimnames = list(NULL, c("discount_name", "agg_discount"))) %>%
     as_tibble() %>%
-    mutate(total = as.numeric(str_remove_all(.data$total, "[^\\d-.]")))
+    mutate(agg_discount = num4(str_remove_all(.data$agg_discount, "[^\\d-.]")))
 }
 
 #' @rdname get_address
