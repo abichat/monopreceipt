@@ -1,0 +1,56 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# monopreceipt
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+`monopreceipt` allow users to read information from Monoprix PDF receipts.
+
+## Installation
+
+You can install the development version of monopreceipt from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("remotes")
+remotes::install_github("abichat/monopreceipt")
+```
+
+## How to read a receipt
+
+A Monoprix receipt looks like this:
+
+<p align="center">
+<img src="inst/img/receipt-22_09_27-p1.jpg" width=200/>   <img src="inst/img/receipt-22_09_27-p2.jpg" width=200/>
+</p>
+
+To read it, you need to give the path to `read_receipt()`.
+
+```{r example}
+library(monopreceipt)
+path_to_pdf <- system.file("extdata/receipts/receipt-22_09_27.pdf", 
+                           package = "monopreceipt")
+receipt <- read_receipt(path_to_pdf)
+```
+
+The result will be a tibble with formatted information.
+
+```{r}
+receipt
+receipt$purchases_detail[[1]]
+receipt$discounts_detail[[1]]
+```
+

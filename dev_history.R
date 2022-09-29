@@ -24,6 +24,8 @@ library(testthat)
 
 # use_test("receipt")
 
+# use_readme_rmd()
+
 
 ####
 
