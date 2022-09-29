@@ -1,5 +1,6 @@
 library(devtools)
 library(usethis)
+library(testthat)
 
 # use_build_ignore("dev_history.R")
 
@@ -18,6 +19,10 @@ library(usethis)
 # use_r("helpers_purchases")
 
 # use_r("read_receipt")
+
+# use_testthat()
+
+# use_test("receipt")
 
 
 ####
