@@ -30,6 +30,7 @@ library(testthat)
 
 # use_github_action_check_release()
 
+# use_logo("../stickers/monopreceipt/logo_monopreceipt.png")
 
 ####
 

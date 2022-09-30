@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# monopreceipt
+# monopreceipt <img src="man/figures/logo.png" align="right" height="138" />
 
 <!-- badges: start -->
 
@@ -67,6 +67,6 @@ receipt$discounts_detail[[1]]
 #> # A tibble: 2 × 2
 #>   discount_name       agg_discount
 #>   <chr>                      <dbl>
-#> 1 Le 2ème à moins 50%        -1.18
-#> 2 -10% Monopflix             -2.49
+#> 1 -10% Monopflix             -2.49
+#> 2 Le 2ème à moins 50%        -1.18
 ```
