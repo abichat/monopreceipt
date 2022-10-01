@@ -1,7 +1,7 @@
 Type: Package
 Package: monopreceipt
 Title: Read Monoprix Receipt
-Version: 0.0.0.9000
+Version: 0.0.1
 Authors@R: 
     person("Antoine", "Bichat", , "antoine.bichat@proton.me", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-6599-7081"))

@@ -32,6 +32,9 @@ library(testthat)
 
 # use_logo("../stickers/monopreceipt/logo_monopreceipt.png")
 
+# use_news_md()
+
+
 ####
 
 devtools::load_all()
@@ -47,3 +50,10 @@ devtools::test()
 devtools::check()
 
 goodpractice::goodpractice()
+
+
+####
+
+devtools::install(upgrade = "never")
+rmarkdown::render("README.Rmd"); file.remove("README.html")
+devtools::install(upgrade = "never")
